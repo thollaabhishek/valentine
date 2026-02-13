@@ -1,17 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ket ❤️</title>
+<meta charset="UTF-8">
+<title>For Ket ❤️</title>
+
+<style>
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+/* Arc Reactor */
+#reactor{
+width:200px;
+height:200px;
+border-radius:50%;
+border:8px solid #00e6ff;
+box-shadow:0 0 30px #00e6ff, inset 0 0 30px #00e6ff;
+margin:auto;
+margin-top:150px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ box-shadow:0 0 20px #00e6ff; }
+to{ box-shadow:0 0 60px #00e6ff; }
+}
+
+#login{
+display:none;
+margin-top:40px;
+}
+
+input{
+padding:12px;
+font-size:18px;
+border-radius:20px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border-radius:25px;
+border:none;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+</style>
 </head>
 
-<body style="background:pink; text-align:center; font-family:Arial;">
+<body>
 
-<h1>Ket ❤️</h1>
-<h2>If you see this, website works 😌</h2>
+<div id="intro">
+<div id="reactor"></div>
+<h2>J.A.R.V.I.S Activating Love Protocol...</h2>
+</div>
 
-<button onclick="window.location.href='love.html'">
-Continue
-</button>
+<div id="login">
+<h1>Access Ket's Heart ❤️</h1>
+<p>Hint: Our special date 😉</p>
+
+<input type="password" id="password">
+<br><br>
+<button onclick="checkPassword()">Unlock Love</button>
+</div>
+
+<script>
+
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+document.getElementById("login").style.display="block";
+},4000);
+
+const correctPassword="230123";
+
+function checkPassword(){
+if(document.getElementById("password").value===correctPassword){
+window.location.href="love.html";
+}else{
+alert("Wrong password 😜");
+}
+}
+
+</script>
 
 </body>
 </html>
