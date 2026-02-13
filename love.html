@@ -3,42 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <title>Ket ❤️</title>
+
 <style>
 body{
-    background:linear-gradient(#ffd6e7,#fff0f5);
-    text-align:center;
-    font-family:Arial;
+background:linear-gradient(#ffd6e7,#fff0f5);
+text-align:center;
+font-family:Arial;
+margin:0;
 }
 
-h1{ color:#ff4d88; margin-top:40px; }
+h1{
+color:#ff4d88;
+margin-top:40px;
+}
 
-.hidden{ display:none; }
+p{
+font-size:20px;
+max-width:700px;
+margin:auto;
+padding:15px;
+}
 
+.hidden{
+display:none;
+}
+
+button{
+background:#ff4d88;
+border:none;
+padding:15px 25px;
+font-size:18px;
+color:white;
+border-radius:25px;
+cursor:pointer;
+}
+
+/* Floating Hearts */
 .heart{
-    position:fixed;
-    font-size:20px;
-    animation:float 5s linear infinite;
+position:fixed;
+font-size:20px;
+animation:float 5s linear infinite;
 }
 
 @keyframes float{
-    0%{ transform:translateY(100vh); }
-    100%{ transform:translateY(-10vh); }
+0%{ transform:translateY(100vh); }
+100%{ transform:translateY(-10vh); }
 }
 </style>
 </head>
 
 <body>
 
-<h1>To My Forever Valentine Ket ❤️</h1>
+<h1>To My Forever Valentine, Ket ❤️</h1>
 
-<p>3 beautiful years since Omegle brought us together.</p>
+<p>
+3 beautiful years since Omegle brought us together.
+That random moment became the best part of my life.
+</p>
 
-<p>You were there when I had nothing and will be there when I have everything.</p>
+<p>
+I still remember the way you cried over our imaginary breakup.
+That moment showed how deeply you love.
+And I promise... I will never bully you 😌
+</p>
 
-<button onclick="show()">Click Surprise 💌</button>
+<p>
+You were there when I had nothing.
+And I know you will be there when I have everything.
+</p>
+
+<p>
+One day I want us to live under the same roof  
+and grow old together.
+</p>
+
+<button onclick="showMessage()">Click For Surprise 💌</button>
 
 <p id="msg" class="hidden">
-THANK YOU FOR BEING MY FOREVER VALENTINE ❤️
+THANK YOU FOR BEING IN MY LIFE AS MY FOREVER VALENTINE ❤️
 </p>
 
 <audio autoplay loop>
@@ -46,19 +88,23 @@ THANK YOU FOR BEING MY FOREVER VALENTINE ❤️
 </audio>
 
 <script>
-function show(){
- document.getElementById("msg").classList.remove("hidden");
+
+function showMessage(){
+document.getElementById("msg").classList.remove("hidden");
 }
 
 function heart(){
- let h=document.createElement("div");
- h.className="heart";
- h.innerHTML="💖";
- h.style.left=Math.random()*100+"vw";
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),5000);
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),5000);
 }
+
 setInterval(heart,300);
+
 </script>
 
 </body>
