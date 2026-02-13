@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ket ❤️</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    overflow:hidden;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+}
+
+#login{
+    position:absolute;
+    top:40%;
+    width:100%;
+    display:none;
+}
+
+input{
+    padding:12px;
+    font-size:18px;
+    border-radius:20px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border-radius:25px;
+    border:none;
+    background:#ff4d88;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+<h1>Access Ket's Heart ❤️</h1>
+<input type="password" id="password">
+<br><br>
+<button onclick="checkPassword()">Unlock</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+
+/* THREE JS SCENE */
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+
+let renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+let light = new THREE.PointLight(0x00ffff,2);
+light.position.set(2,2,2);
+scene.add(light);
+
+camera.position.z = 3;
+
+/* LOAD 3D HELMET MODEL */
+let loader = new THREE.GLTFLoader();
+
+loader.load(
+'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb',
+
+function(gltf){
+    let helmet = gltf.scene;
+    scene.add(helmet);
+
+    function animate(){
+        requestAnimationFrame(animate);
+        helmet.rotation.y += 0.01;
+        renderer.render(scene,camera);
+    }
+
+    animate();
+
+    /* AFTER 6 SECONDS SHOW PASSWORD */
+    setTimeout(()=>{
+        document.getElementById("login").style.display="block";
+    },6000);
+
+}
+);
+
+/* PASSWORD */
+const correctPassword="230123";
+
+function checkPassword(){
+
+    if(document.getElementById("password").value===correctPassword){
+        alert("Love Access Granted ❤️");
+        window.location.href="love.html"; // next page
+    }
+    else{
+        alert("Access Denied 😜");
+    }
+}
+
+</script>
+
+</body>
+</html>
