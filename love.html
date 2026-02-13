@@ -104,8 +104,34 @@ setTimeout(()=>h.remove(),5000);
 
 setInterval(heart,300);
 
+<script>
+
+const music = document.getElementById("bgMusic");
+
+function showMessage(){
+document.getElementById("msg").classList.remove("hidden");
+}
+
+function heart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+}
+
+setInterval(heart,300);
+
+window.onload = function(){
+document.body.addEventListener("click", function(){
+music.play();
+}, { once: true });
+};
+
 </script>
 
 </body>
 </html>
+
 
