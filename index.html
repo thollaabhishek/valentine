@@ -6,39 +6,59 @@
 
 <style>
 body{
-    margin:0;
-    background:black;
-    overflow:hidden;
-    color:white;
-    font-family:Arial;
-    text-align:center;
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+#reactor{
+width:200px;
+height:200px;
+border-radius:50%;
+border:8px solid #00e6ff;
+box-shadow:0 0 30px #00e6ff, inset 0 0 30px #00e6ff;
+margin:auto;
+margin-top:150px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ box-shadow:0 0 20px #00e6ff; }
+to{ box-shadow:0 0 60px #00e6ff; }
 }
 
 #login{
-    position:absolute;
-    top:40%;
-    width:100%;
-    display:none;
+display:none;
+margin-top:50px;
 }
 
 input{
-    padding:12px;
-    font-size:18px;
-    border-radius:20px;
+padding:12px;
+font-size:18px;
+border-radius:20px;
 }
 
 button{
-    padding:12px 25px;
-    font-size:18px;
-    border-radius:25px;
-    border:none;
-    background:#ff4d88;
-    color:white;
+padding:12px 25px;
+font-size:18px;
+border-radius:25px;
+border:none;
+background:#ff4d88;
+color:white;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
+
+<div id="intro">
+<div id="reactor"></div>
+<h2>J.A.R.V.I.S Initializing Love Protocol...</h2>
+</div>
 
 <div id="login">
 <h1>Access Ket's Heart ❤️</h1>
@@ -47,63 +67,21 @@ button{
 <button onclick="checkPassword()">Unlock</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
-
 <script>
 
-/* THREE JS SCENE */
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+document.getElementById("login").style.display="block";
+},4000);
 
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-let light = new THREE.PointLight(0x00ffff,2);
-light.position.set(2,2,2);
-scene.add(light);
-
-camera.position.z = 3;
-
-/* LOAD 3D HELMET MODEL */
-let loader = new THREE.GLTFLoader();
-
-loader.load(
-'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Binary/DamagedHelmet.glb',
-
-function(gltf){
-    let helmet = gltf.scene;
-    scene.add(helmet);
-
-    function animate(){
-        requestAnimationFrame(animate);
-        helmet.rotation.y += 0.01;
-        renderer.render(scene,camera);
-    }
-
-    animate();
-
-    /* AFTER 6 SECONDS SHOW PASSWORD */
-    setTimeout(()=>{
-        document.getElementById("login").style.display="block";
-    },6000);
-
-}
-);
-
-/* PASSWORD */
 const correctPassword="230123";
 
 function checkPassword(){
-
-    if(document.getElementById("password").value===correctPassword){
-        alert("Love Access Granted ❤️");
-        window.location.href="love.html"; // next page
-    }
-    else{
-        alert("Access Denied 😜");
-    }
+if(document.getElementById("password").value===correctPassword){
+window.location.href="love.html";
+}else{
+alert("Wrong password 😜");
+}
 }
 
 </script>
